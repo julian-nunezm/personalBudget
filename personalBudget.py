@@ -1,4 +1,5 @@
 from tkinter import Tk, Label, Button, Entry, StringVar#, LEFT, RIGHT
+from datetime import date
 
 class personalBudgetGUI:
     def __init__(self, master):
@@ -28,9 +29,19 @@ class personalBudgetGUI:
         #self.close_button.pack()
         self.close_button.grid(row=3, column=2)
 
-    def greet(self):
-        print(f"Greetings! Welcome to this awesome tool {self.name.get()}.")
+        self.time = Label(master, text=date.today())
+        self.time.grid(row=4, column=1, columnspan=2)
 
+    def greet(self):
+        name = self.name.get()
+        if(name != ""):
+            print(f"Greetings! Welcome to this awesome tool {name}.")
+        else:
+            print("Greetings! Although we didn't know your name, welcome to this awesome.")
+
+#A module is a collection of classes or functions
+#A package is a collection of modules
+#A library called Distribute is currently the most popular tool for creating Python packages (Python 3)
 app = Tk()
 pb_gui = personalBudgetGUI(app)
 app.mainloop()
